@@ -1,0 +1,53 @@
+{
+    "Meeting":[
+        {
+            "title": "회의1",
+            "id": 1
+
+        },
+        {
+            "title": "회의2",
+            "id": 2
+        },
+        {
+            "title": "회의3",
+            "id": 3
+        },
+        {
+            "title": "회의4",
+            "id": 4
+        },
+        {
+            "title": "회의5",
+            "id": 5
+        },
+        {
+            "title": "회의6",
+            "id": 6
+        }
+    ],
+    "Profile": [
+        {
+            "name": "이재원",
+            "state": true
+        },
+        {
+            "name": "김민균",
+            "state": false
+        },
+        {
+            "name": "장지원",
+            "state": true
+        },
+        {
+            "name": "김주영",
+            "state": false
+        }
+    ],
+    "User": [
+        {
+            "name": "이재원",
+            "state": true
+        }
+    ]
+}

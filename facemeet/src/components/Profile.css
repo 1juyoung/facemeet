@@ -1,0 +1,106 @@
+.Profile {
+    position: absolute;
+    width: 95%;
+    background: #818181;
+    border-radius: 20px;
+}
+
+.Profile h1 {
+    position: absolute;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    left: 18rem;
+}
+
+.Profile .header {
+    background: #4EE080;
+    border-radius: 20px 20px 0 0;
+    height: 5rem;
+}
+
+.Profile .information {
+    background: #B6B6B6;
+    padding: 1rem;
+    margin: 7rem 1rem 1rem 1rem;
+    border-radius: 20px;
+}
+
+.Profile .picture {
+    position: absolute;
+    background: #e1e0e0;
+    border-radius: 50%;
+    height: 12rem;
+    width: 12rem;
+    left: 4rem;
+    top: 1rem;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.Profile .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Profile .profile-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #e1e0e0;
+    border-radius: 50%;
+}
+
+.Profile .save {
+    position: absolute;
+    background-color: #fa9018;
+    color: white;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    right: 1rem;
+    top: 11rem;
+}
+
+.Profile .save:hover {
+    background-color: #bf6c0d;
+}
+
+.Profile .picture-button {
+    position: relative;
+    background-color: #4EE080;
+    color: white;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-right: 1rem;
+    border-radius: 10px;
+    left: 17rem;
+    top: 5rem;
+}
+
+.Profile .picture-button:hover {
+    background-color: #2a9551;
+}
+
+.Profile .text-input {
+    padding: 10px;
+    background-color: #818181;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.Profile label {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}

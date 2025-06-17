@@ -1,0 +1,201 @@
+/* 부모 요소 설정 */
+.Container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* 부모 요소의 높이를 설정합니다 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+}
+
+/* Chatting 컴포넌트의 스타일 */
+.Chatting {
+    position: absolute;
+    width: 20.5%;
+    height: 70%;
+    background-color: #818181;
+    top: 5%;
+    right: 5%;
+    border-radius: 20px;
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 가능하게 설정 */
+    right: 1%;
+    top: 2%;
+    border: 5px solid #4EE080;
+    border-radius: 5%;
+}
+
+.ChatInput {
+    position: absolute;
+    bottom: 1px;
+    padding: 10px;
+    display: flex;
+    width: 90%; /* 부모 요소에 맞추기 위해 추가 */
+}
+
+.ChatInput input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.ChatInput button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4EE080;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ChatInput button:hover {
+    background-color: #40b569;
+}
+
+.Score {
+    position: absolute;
+    width: 20%; /* 부모 요소의 너비에 비례합니다 */
+    height: 20%; /* 부모 요소의 높이에 비례합니다 */
+    background-color: black;
+    bottom: 3%; /* 화면 아래쪽에서부터의 위치 */
+    right: 1%; /* 화면 오른쪽에서부터의 위치 */
+    border-radius: 20px;
+    border-width: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Score text {
+    font-size: 90px;
+}
+
+.Camera {
+    position: absolute;
+    width: 73%;
+    height: 93%;
+    top: 1%;
+    left: 1%;
+    padding: 10px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.Camera1 {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    width: 45%;
+    height: 45%;
+    max-width: 600px;
+    border: 3px solid #40b569;
+    border-radius: 10px;
+}
+
+.Camera2 {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 45%;
+    height: 45%;
+    border: 3px solid #40b569;
+    border-radius: 10px;
+}
+
+.Camera3 {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    width: 45%;
+    height: 45%;
+    border: 3px solid #40b569;
+    border-radius: 10px;
+}
+
+.Camera4 {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    width: 45%;
+    height: 45%;
+    border: 3px solid #40b569;
+    border-radius: 10px;
+}
+
+/* 버튼 스타일 */
+.rescreen-button, .entry-button, .con-button {
+    position: absolute;
+    background-color: #4EE080;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition-duration: 0.4s;
+}
+
+.rescreen-button {
+    bottom: 15%;
+    right: 23%;
+}
+
+.rescreen-button:hover {
+    background-color: white;
+    color: black;
+    border: 5px solid #4EE080;
+}
+
+.entry-button {
+    bottom: 5%;
+    right: 23%;
+}
+
+.entry-button:hover {
+    background-color: white;
+    color: black;
+    border: 5px solid #4EE080;
+}
+
+.con-button {
+    top: 44%;
+    left: 50%;
+}
+
+.con-button:hover {
+    background-color: white;
+    color: black;
+    border: 5px solid #4EE080;
+}
+
+.KeyInput {
+    position: absolute;
+    top: 45%;
+    left: 37%;
+    flex: 1;
+    padding: 10px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.speech {
+    bottom: 5%;
+    left: 5%;
+    position: absolute;
+    background-color: #4EE080;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition-duration: 0.4s;
+}

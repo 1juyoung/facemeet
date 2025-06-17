@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+  </head>
+  <body>
+    <form id="loginForm">
+      <h1>Login</h1>
+      <label for="userId">ID:</label>
+      <input type="text" id="userId" name="userId" required /><br />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required /><br />
+
+      <label for="rememberMe">Remember me:</label>
+      <input type="checkbox" id="rememberMe" name="rememberMe" />
+
+      <br /><br />
+
+      <button type="submit">Login</button>
+      <a href="./join">회원가입</a>
+    </form>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const loginForm = document.getElementById("loginForm");
+
+        // 로그인 폼 제출 시
+        loginForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const userId = document.getElementById("userId").value;
+          const password = document.getElementById("password").value;
+          const rememberMe = document.getElementById("rememberMe").checked;
+
+          try {
+            // 서버에 로그인 요청 보내기
+            const response = await fetch("/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ userId, password, rememberMe }),
+            });
+
+            if (response.ok) {
+              // 로그인 성공 시 서버로부터의 응답을 처리
+              const data = await response.json();
+
+              window.location.href = "/";
+            } else {
+              // 로그인 실패시
+              alert("올바른 아이디와 비밀번호를 입력하세요.");
+
+              console.error("로그인 실패", response.statusText);
+            }
+          } catch (error) {
+            console.error("오류 발생", error);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

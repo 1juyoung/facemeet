@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+  </head>
+
+  <body>
+    <form>
+      <label for="userId">ID:</label>
+      <input type="text" id="userId" name="userId" required />
+      <button type="button" onclick="checkDuplicate()">중복 확인</button>
+      <br />
+      <label for="pw1">비밀번호1:</label>
+      <input type="password" id="pw1" name="pw1" minlength="4" required />
+      <br />
+      <label for="pw2">비밀번호2:</label>
+      <input type="password" id="pw2" name="pw2" minlength="4" required />
+      <br />
+      <span id="pwMatch"></span>
+      <br />
+      <button type="button" id="submitBtn" disabled>제출</button>
+    </form>
+
+    <script>
+      let isSubmitEnabled = false; // 전역 변수로 선언
+
+      async function checkDuplicate() {
+        const userId = document.getElementById("userId").value;
+
+        if (!userId) {
+          alert("ID를 입력하세요.");
+          return;
+        }
+
+        try {
+          const response = await fetch("/register/checkDuplicate", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userId }),
+          });
+
+          const result = await response.json();
+
+          if (!result.isDuplicate) {
+            // 중복이 아닌 경우에만 pw1, pw2 조건을 검사하고 제출 버튼을 활성화
+            alert("사용 가능한 ID입니다.");
+            isSubmitEnabled = true;
+            updateSubmitButton();
+          } else {
+            alert("중복된 ID입니다.");
+            isSubmitEnabled = false; // 중복인 경우에는 제출 비활성화
+          }
+        } catch (error) {
+          console.error("Error checking duplicate:", error);
+          alert("서버 오류가 발생했습니다.");
+        }
+      }
+
+      function updateSubmitButton() {
+        const userId = document.getElementById("userId").value;
+        const pw1 = document.getElementById("pw1").value;
+        const pw2 = document.getElementById("pw2").value;
+        const pwMatch = document.getElementById("pwMatch");
+
+        // ID, pw1, pw2 조건 모두 충족할 때만 제출 버튼 활성화
+        const isUpdateSubmitEnabled =
+          isSubmitEnabled && // checkDuplicate에서 허용되었어야 함
+          userId && // ID가 비어있지 않아야 함
+          pw1.length >= 4 &&
+          /^(?=.*[A-Za-z])(?=.*\d)/.test(pw1) && // pw1 조건 충족
+          pw1 === pw2; // pw1과 pw2가 일치해야 함
+
+        //pw1 입력 전에는 빈 텍스트
+
+        if ((pw1.length = 0)) {
+          pwMatch.innerText = "";
+        }
+
+        if (
+          pw1.length > 0 &&
+          !(pw1.length >= 4 && /^(?=.*[A-Za-z])(?=.*\d)/.test(pw1))
+        ) {
+          pwMatch.innerText =
+            "비밀번호는 영어와 숫자 조합으로 4글자 이상이어야 합니다.";
+        }
+
+        // pw1 조건 충족할 때
+        else {
+          pwMatch.innerText = ""; //아무것도 표기하지 않음
+
+          if (pw1 !== pw2) {
+            pwMatch.innerText = "비밀번호 1과 비밀번호 2가 일치하지 않습니다.";
+          }
+        }
+
+        const submitBtn = document.getElementById("submitBtn");
+        submitBtn.disabled = !isUpdateSubmitEnabled;
+      }
+
+      document
+        .getElementById("userId")
+        .addEventListener("input", updateSubmitButton);
+      document
+        .getElementById("pw1")
+        .addEventListener("input", updateSubmitButton);
+      document
+        .getElementById("pw2")
+        .addEventListener("input", updateSubmitButton);
+
+      async function registerUser() {
+        const userId = document.getElementById("userId").value;
+        const pw1 = document.getElementById("pw1").value;
+        const pw2 = document.getElementById("pw2").value;
+
+        try {
+          const response = await fetch("/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userId, pw1, pw2 }),
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            alert(result.message); // 성공적으로 회원가입 완료 메시지
+            // 추가로 필요한 작업 수행 가능
+          } else {
+            alert(result.error); // 오류 메시지
+          }
+        } catch (error) {
+          console.error("Error during registration:", error);
+          alert("서버 오류가 발생했습니다.");
+        }
+      }
+
+      document
+        .getElementById("submitBtn")
+        .addEventListener("click", registerUser);
+    </script>
+  </body>
+</html>
