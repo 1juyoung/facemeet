@@ -1,7 +1,7 @@
 # FaceMeet - 표정 분석 기반 화상 회의 웹 서비스
 
 📅 **발표 시점**: 2024년 11월 (졸업 작품)  
-🧠 **주요 기술**: WebRTC, Socket.io, React, Express, Mongoose, DeepFace, OpenCV
+🧠 **주요 기술**: WebRTC, Socket.io, React, Express, MongoDB DeepFace, OpenCV
 
 ---
 
@@ -27,7 +27,7 @@ backend/
 ├── facemeet/               # 프론트엔드 코드 (React)
 ├── model/                  # 표정 분석 파이썬 기반 모델 (Flask + DeepFace)
 ├── modules/                # 백엔드 모듈 (미들웨어, 로직 등)
-├── mongoose/               # Mongoose 모델 정의
+├── mongoose/               # MongoDB 모델 정의
 └── ...
 ```
 
@@ -105,7 +105,3 @@ Emotion Score =
 - 총 4인 구성 (프론트엔드 2, 백엔드 1, AI 모델 1)
 
 ---
-
-## 📄 License
-
-본 프로젝트는 졸업작품 목적으로 제작되었으며, 상업적 이용은 제한됩니다.
